@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jsk_app/documents_list.dart';
+import 'package:jsk_app/flow_diagram.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Info extends StatefulWidget {
@@ -33,7 +35,12 @@ class _InfoState extends State<Info> {
           children: [
             Text("Available Information"),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Documents()));
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -44,7 +51,12 @@ class _InfoState extends State<Info> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Diagram()));
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
