@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:jsk_app/Login.dart';
-import 'package:jsk_app/AdminPanel.dart';
+import 'package:jsk_app/info_menu.dart';
+import 'package:jsk_app/login.dart';
+import 'package:jsk_app/admin_panel.dart';
+// ignore_for_file: prefer_const_constructors
 
 void main() {
   runApp(const MyApp());
@@ -143,14 +145,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(6.0),
+            margin: EdgeInsets.all(25.0),
             child: TextFormField(
+              onTap: () {
+                showSearch(context: context, delegate: DataSearch());
+              },
+              readOnly: true,
               decoration: const InputDecoration(
                 labelText: 'Search Anything...',
                 border: OutlineInputBorder(),
-                suffixIcon: Icon(
-                  Icons.search,
-                ),
+                suffixIcon: Icon(Icons.search),
               ),
             ),
           ),
@@ -181,7 +185,12 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => Info()));
+                        },
                         icon: Icon(Icons.settings),
                       ),
                       Text('data')
@@ -270,6 +279,72 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class DataSearch extends SearchDelegate<String> {
+  List<String> wlist = ["Hello", "World", "Hpw are you?"];
+  List<String> recents = ["Hola", "MF"];
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = "";
+        },
+        icon: Icon(Icons.clear),
+      )
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, "null");
+      },
+      icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final list = query.isEmpty
+        ? recents
+        : wlist.where((element) => element.startsWith(query)).toList();
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => Info()));
+          },
+          leading: Icon(Icons.pages),
+          title: RichText(
+            text: TextSpan(
+              text: list[index].substring(0, query.length),
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              children: [
+                TextSpan(
+                  text: list[index].substring(query.length),
+                  style: TextStyle(color: Colors.grey),
+                )
+              ],
+            ),
+          )),
+      itemCount: list.length,
     );
   }
 }

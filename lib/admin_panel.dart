@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors
 
 class AdminPanel extends StatefulWidget {
   const AdminPanel({super.key});
@@ -27,7 +28,7 @@ class _AdminPanelState extends State<AdminPanel> {
         automaticallyImplyLeading: false,
       ),
       body: currentIndex == 0
-          ? Container(
+          ? SizedBox(
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +91,7 @@ class _AdminPanelState extends State<AdminPanel> {
                 ],
               ),
             )
-          : Container(
+          : SizedBox(
               width: double.infinity,
               child: Column(
                 children: [
