@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           SizedBox(
-            height: 250.0,
+            height: 200.0,
             child: ListView(
               children: [
                 CarouselSlider(
@@ -105,9 +105,8 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"),
-                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/banner-1.jpg"),
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
@@ -118,9 +117,8 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                              "https://cdn.pixabay.com/photo/2018/01/12/10/19/fantasy-3077928__480.jpg"),
-                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/banner-2.jpg"),
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
@@ -130,7 +128,7 @@ class _HomePageState extends State<HomePage> {
 
                   //Slider Container properties
                   options: CarouselOptions(
-                    height: 250.0,
+                    height: 200.0,
                     enlargeCenterPage: true,
                     autoPlay: true,
                     aspectRatio: 16 / 9,
@@ -177,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data'),
                     ],
@@ -191,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                               MaterialPageRoute(
                                   builder: (BuildContext context) => Info()));
                         },
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data')
                     ],
@@ -200,42 +198,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.settings),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                ]),
-          ),
-          Container(
-            margin: EdgeInsets.all(6.0),
-            alignment: FractionalOffset.center,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.settings),
-                      ),
-                      Text('data'),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.settings),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data')
                     ],
@@ -252,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data'),
                     ],
@@ -261,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data')
                     ],
@@ -270,7 +233,42 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.settings),
+                        icon: Icon(Icons.card_giftcard),
+                      ),
+                      Text('data')
+                    ],
+                  ),
+                ]),
+          ),
+          Container(
+            margin: EdgeInsets.all(6.0),
+            alignment: FractionalOffset.center,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.card_giftcard),
+                      ),
+                      Text('data'),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.card_giftcard),
+                      ),
+                      Text('data')
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.card_giftcard),
                       ),
                       Text('data')
                     ],
