@@ -26,15 +26,18 @@ class _DiagramState extends State<Diagram> {
       ),
       body: ListView(
         children: [
-          Card(
-            margin: EdgeInsets.all(25.0),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            elevation: 10,
-            color: Colors.pink,
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              child: Image.asset('assets/images/flow.jpeg'),
+          Container(
+            height: 500,
+            child: Card(
+              margin: EdgeInsets.all(25.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              elevation: 10,
+              color: Colors.pink,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Image.asset('assets/images/flow.jpeg'),
+              ),
             ),
           ),
           Container(
@@ -42,7 +45,6 @@ class _DiagramState extends State<Diagram> {
             child: ElevatedButton(
               onPressed: () {},
               child: Text("GO Back"),
-              
             ),
           )
         ],
