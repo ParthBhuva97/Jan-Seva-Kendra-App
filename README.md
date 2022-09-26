@@ -1,17 +1,39 @@
-# jsk_app
 
-A new Flutter project.
+# Jan Seva Kendra Awarness App
 
-## Getting Started
+An Awarness app that can help spread information about different services provided by Goverment Initiative called Jan-Seva-Kendra.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Documentation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# SSIP
+[SRS Document](https://drive.google.com/drive/folders/1KMYtJWDBf2umOZ9JUdwTJx_xKW9lYqXI?usp=sharing)
+
+
+## Tech Stack
+
+**Languages:** Dart, Flutter, Angular JS, TailwindCSS
+
+**Database:** Firebase Firestore
+
+
+## Features
+
+- Available in Native Gujarati language
+- Information can be updated in Real-time.
+- Accessible User Interface
+- Cross platform
+
+
+## Used By
+
+This project can be used by :
+
+- Mamlatdar Offices in Gujarat.
+- People that can read and understand Gujarati Language.
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at parthbhuva97@gmail.com
+
