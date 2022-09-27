@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:jsk_app/info_menu.dart';
 
 class Diagram extends StatefulWidget {
   const Diagram({super.key});
@@ -26,6 +27,7 @@ class _DiagramState extends State<Diagram> {
         backgroundColor: Colors.white,
         leading: Image.asset('assets/images/logo.png'),
       ),
+      backgroundColor: Colors.black,
       body: ListView(
         children: [
           Container(
@@ -66,9 +68,26 @@ class _DiagramState extends State<Diagram> {
           ),
           Container(
             margin: EdgeInsets.all(20.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text("GO Back"),
+            child: NeumorphicButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Info()));
+              },
+              style: NeumorphicStyle(
+                lightSource: LightSource.bottom,
+                shape: NeumorphicShape.convex,
+                depth: 5,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(20.0)),
+              ),
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                  child: Text(
+                "Go back",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
             ),
           )
         ],
