@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:jsk_app/info_menu.dart';
 import 'package:jsk_app/login.dart';
-import 'package:jsk_app/admin_panel.dart';
 // ignore_for_file: prefer_const_constructors
 
 void main() {
