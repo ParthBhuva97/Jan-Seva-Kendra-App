@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:jsk_app/admin_panel.dart';
 import 'package:jsk_app/info_menu.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // ignore_for_file: prefer_const_constructors
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

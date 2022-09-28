@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:jsk_app/admin_panel.dart';
 import 'package:jsk_app/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Login extends StatefulWidget {
@@ -12,6 +13,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,8 +140,9 @@ class _LoginState extends State<Login> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]!))),
                                 child: TextField(
+                                    controller: emailController,
                                     decoration: InputDecoration(
-                                        hintText: "Email or Phone number",
+                                        hintText: "Email",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none)),
@@ -150,6 +154,7 @@ class _LoginState extends State<Login> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]!))),
                                 child: TextField(
+                                    controller: passwordController,
                                     decoration: InputDecoration(
                                         hintText: "Password",
                                         hintStyle:
@@ -184,13 +189,7 @@ class _LoginState extends State<Login> {
                                   padding: EdgeInsets.all(
                                       20) //content padding inside button
                                   ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            const AdminPanel()));
-                              },
+                              onPressed: signIn,
                               child: Text("Login")),
                         ),
                       ],
@@ -203,5 +202,18 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => AdminPanel()));
+      return null;
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
   }
 }
