@@ -19,6 +19,18 @@ class _InfoState extends State<Info> {
     final msg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+
         title: const Text(
           "Navigation Panel",
           style: TextStyle(
@@ -29,7 +41,7 @@ class _InfoState extends State<Info> {
           color: Colors.black,
         ),
         backgroundColor: Colors.white,
-        leading: Image.asset('assets/images/logo.png'),
+        //leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
         decoration: BoxDecoration(

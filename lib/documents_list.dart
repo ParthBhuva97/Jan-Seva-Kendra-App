@@ -13,6 +13,17 @@ class _DocumentsState extends State<Documents> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         title: const Text(
           "Required Documents",
           style: TextStyle(
@@ -23,7 +34,7 @@ class _DocumentsState extends State<Documents> {
           color: Colors.black,
         ),
         backgroundColor: Colors.white,
-        leading: Image.asset('assets/images/logo.png'),
+        //leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
         margin: EdgeInsets.all(20.0),
