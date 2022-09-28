@@ -196,7 +196,8 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (BuildContext context) => Info()));
+                                  builder: (BuildContext context) => Info(),
+                                  settings: RouteSettings(arguments: 'data')));
                         },
                         icon: Icon(Icons.card_giftcard),
                       ),
