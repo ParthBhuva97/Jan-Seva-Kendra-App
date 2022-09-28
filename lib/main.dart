@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:jsk_app/info_menu.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/login.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -174,9 +175,9 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
+                        icon: FaIcon(FontAwesomeIcons.idCardClip),
                       ),
-                      Text('data'),
+                      Text('Aadhar Card'),
                     ],
                   ),
                   Column(
@@ -320,10 +321,8 @@ class DataSearch extends SearchDelegate<String> {
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => Info()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) => Info()));
           },
           leading: Icon(Icons.pages),
           title: RichText(

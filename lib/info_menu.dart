@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/documents_list.dart';
 import 'package:jsk_app/flow_diagram.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -42,6 +43,8 @@ class _InfoState extends State<Info> {
                   shape: NeumorphicShape.concave,
                   boxShape:
                       NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                  shadowLightColor: Color(0xffff9933).withOpacity(1),
+                  shadowDarkColor: Color(0xff198808),
                   depth: 8,
                   lightSource: LightSource.topLeft,
                   color: Colors.white,
@@ -50,7 +53,7 @@ class _InfoState extends State<Info> {
                   "Available Information",
                   style: NeumorphicStyle(
                     depth: 20, //customize depth here
-                    color: Colors.black, //customize color here
+                    color: Colors.blueAccent, //customize color here
                     lightSource: LightSource.bottomRight,
                     shape: NeumorphicShape.convex,
                   ),
@@ -62,38 +65,97 @@ class _InfoState extends State<Info> {
                 ),
               ),
             ),
-            ElevatedButton(
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (BuildContext context) => Documents()));
+            //   },
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: const [
+            //       Icon(Icons.card_giftcard),
+            //       Text("Documents"),
+            //       Icon(Icons.arrow_right)
+            //     ],
+            //   ),
+            // ),
+            NeumorphicButton(
+              padding: EdgeInsets.all(20.0),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) => Documents()));
               },
+              style: NeumorphicStyle(
+                lightSource: LightSource.bottom,
+                shape: NeumorphicShape.convex,
+                depth: 5,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(20.0)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Icon(Icons.card_giftcard),
+                children: [
+                  FaIcon(FontAwesomeIcons.file),
                   Text("Documents"),
-                  Icon(Icons.arrow_right)
+                  Container(
+                    child: Icon(Icons.arrow_right),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            left: BorderSide(color: Colors.black, width: 3.0))),
+                  ),
                 ],
               ),
             ),
-            ElevatedButton(
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (BuildContext context) => Diagram()));
+            //   },
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: const [
+            //       Icon(Icons.card_membership),
+            //       Text("Process"),
+            //       Icon(Icons.arrow_right)
+            //     ],
+            //   ),
+            // ),
+            NeumorphicButton(
+              margin: EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.all(20.0),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) => Diagram()));
               },
+              style: NeumorphicStyle(
+                lightSource: LightSource.bottom,
+                shape: NeumorphicShape.convex,
+                depth: 5,
+                boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(20.0)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Icon(Icons.card_membership),
+                children: [
+                  FaIcon(FontAwesomeIcons.arrowsSpin),
                   Text("Process"),
-                  Icon(Icons.arrow_right)
+                  Container(
+                    child: Icon(Icons.arrow_right),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            left: BorderSide(color: Colors.black, width: 3.0))),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

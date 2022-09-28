@@ -1,7 +1,7 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:jsk_app/admin_panel.dart';
 import 'package:jsk_app/main.dart';
-
 // ignore_for_file: prefer_const_constructors
 
 class Login extends StatefulWidget {
@@ -68,19 +68,21 @@ class _LoginState extends State<Login> {
             ),
           ],
         ),
-      ),
+      ), //--------appbar
       body: Container(
-            padding: const EdgeInsets.symmetric(vertical: 0),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: const [
-                  Color.fromARGB(255, 88, 162, 247),
-                  Color.fromARGB(255, 162, 152, 241),
-                ],
-              ),
-            ),
-            child: Column(children: <Widget>[
+        padding: const EdgeInsets.symmetric(vertical: 0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 88, 162, 247),
+              Color.fromARGB(255, 162, 152, 241),
+            ],
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
               SizedBox(height: 20),
               Padding(
                 padding: EdgeInsets.all(20),
@@ -102,7 +104,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(height: 25),
-              Expanded(
+              Container(
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -196,7 +198,10 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-            ],),),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

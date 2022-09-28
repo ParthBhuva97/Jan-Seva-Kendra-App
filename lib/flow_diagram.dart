@@ -62,12 +62,13 @@ class _DiagramState extends State<Diagram> {
                 child: Image.asset(
                   "assets/images/flow.jpeg",
                   height: double.infinity,
+                  width: double.infinity,
                 ),
               ),
             ),
           ),
           Container(
-            margin: EdgeInsets.all(20.0),
+            margin: EdgeInsets.all(30.0),
             child: NeumorphicButton(
               onPressed: () {
                 Navigator.push(
@@ -82,14 +83,14 @@ class _DiagramState extends State<Diagram> {
                 boxShape:
                     NeumorphicBoxShape.roundRect(BorderRadius.circular(20.0)),
               ),
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(20.0),
               child: Center(
                   child: Text(
                 "Go back",
                 style: TextStyle(fontWeight: FontWeight.bold),
               )),
             ),
-          )
+          ),
         ],
       ),
     );
