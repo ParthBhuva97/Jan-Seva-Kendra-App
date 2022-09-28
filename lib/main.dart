@@ -12,6 +12,12 @@ Future main() async {
   runApp(const MyApp());
 }
 
+class MSG {
+  final String msg;
+
+  const MSG(this.msg);
+}
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -312,8 +318,19 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
+    return Container();
+  }
+
+  @override
+  void showResults(BuildContext context) {
+    if (query.isNotEmpty) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => Info(),
+            settings: RouteSettings(arguments: query),
+          ));
+    }
   }
 
   @override
@@ -324,8 +341,7 @@ class DataSearch extends SearchDelegate<String> {
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) => Info()));
+            query = list[index];
           },
           leading: Icon(Icons.pages),
           title: RichText(

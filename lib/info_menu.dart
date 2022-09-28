@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/documents_list.dart';
 import 'package:jsk_app/flow_diagram.dart';
+import 'package:jsk_app/main.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -15,6 +16,7 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
+    final msg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -30,8 +32,16 @@ class _InfoState extends State<Info> {
         leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFF46B39), Colors.white, Color(0xFF3AB757)],
+            stops: [0, 0.5, 1],
+            begin: AlignmentDirectional(0, -1),
+            end: AlignmentDirectional(0, 1),
+          ),
+        ),
         height: double.infinity,
-        margin: EdgeInsets.all(50.0),
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,6 +49,7 @@ class _InfoState extends State<Info> {
             Container(
               margin: EdgeInsets.only(bottom: 50),
               child: Neumorphic(
+                padding: EdgeInsets.all(20.0),
                 style: NeumorphicStyle(
                   shape: NeumorphicShape.concave,
                   boxShape:
@@ -50,7 +61,7 @@ class _InfoState extends State<Info> {
                   color: Colors.white,
                 ),
                 child: NeumorphicText(
-                  "Available Information",
+                  "Available Information" + msg,
                   style: NeumorphicStyle(
                     depth: 20, //customize depth here
                     color: Colors.blueAccent, //customize color here
@@ -82,6 +93,7 @@ class _InfoState extends State<Info> {
             //   ),
             // ),
             NeumorphicButton(
+              margin: EdgeInsets.all(25.0),
               padding: EdgeInsets.all(20.0),
               onPressed: () {
                 Navigator.push(
@@ -127,7 +139,7 @@ class _InfoState extends State<Info> {
             //   ),
             // ),
             NeumorphicButton(
-              margin: EdgeInsets.only(top: 20.0),
+              margin: EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
               padding: const EdgeInsets.all(20.0),
               onPressed: () {
                 Navigator.push(
