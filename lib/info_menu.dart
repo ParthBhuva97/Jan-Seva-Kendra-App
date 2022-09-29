@@ -59,9 +59,9 @@ class _InfoState extends State<Info> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 50),
+              margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
               child: Neumorphic(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 style: NeumorphicStyle(
                   shape: NeumorphicShape.concave,
                   boxShape:
