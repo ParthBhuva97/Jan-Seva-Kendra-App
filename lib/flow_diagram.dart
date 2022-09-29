@@ -82,7 +82,8 @@ class _DiagramState extends State<Diagram> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext context) => Info()));
+                          builder: (BuildContext context) => Info(),
+                          settings: RouteSettings(arguments: '')));
                 },
                 style: NeumorphicStyle(
                   lightSource: LightSource.bottom,

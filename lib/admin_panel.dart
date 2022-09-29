@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore_for_file: prefer_const_constructors
 
 class AdminPanel extends StatefulWidget {
@@ -10,6 +11,7 @@ class AdminPanel extends StatefulWidget {
 
 class _AdminPanelState extends State<AdminPanel> {
   int currentIndex = 0;
+  late String selected_node;
   List<String> items = [
     'પ્રમાણપત્ર',
     'કાર્ડ',
@@ -50,26 +52,24 @@ class _AdminPanelState extends State<AdminPanel> {
                           .toList(),
                       onChanged: (value) => setState(() {
                         selectedItem = value;
+                        selected_node = selectedItem!;
                       }),
                     ),
                   ),
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.all(20.0),
-                    child: DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(width: 3, color: Colors.black),
-                      )),
-                      value: selectedItem,
-                      items: items
-                          .map((item) =>
-                              DropdownMenuItem(value: item, child: Text(item)))
-                          .toList(),
-                      onChanged: (value) => setState(() {
-                        selectedItem = value;
-                      }),
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection(selected_node)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          Text("Loading");
+                        } else {
+                          List<DropdownMenuItem> subNode = [];
+                        }
+                      },
                     ),
                   ),
                   Container(
