@@ -15,6 +15,17 @@ class _DiagramState extends State<Diagram> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         title: const Text(
           "Flow Diagram",
           style: TextStyle(
@@ -25,7 +36,7 @@ class _DiagramState extends State<Diagram> {
           color: Colors.black,
         ),
         backgroundColor: Colors.white,
-        leading: Image.asset('assets/images/logo.png'),
+        //leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -79,11 +90,6 @@ class _DiagramState extends State<Diagram> {
               margin: EdgeInsets.all(30.0),
               child: NeumorphicButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Info(),
-                          settings: RouteSettings(arguments: '')));
                 },
                 style: NeumorphicStyle(
                   lightSource: LightSource.bottom,
