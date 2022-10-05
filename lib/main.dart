@@ -151,17 +151,32 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(25.0),
-            child: TextFormField(
-              onTap: () {
-                showSearch(context: context, delegate: DataSearch());
-              },
-              readOnly: true,
-              decoration: const InputDecoration(
-                labelText: 'Search Anything...',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.search),
+          GestureDetector(
+            onTap: () {
+              showSearch(context: context, delegate: DataSearch());
+            },
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(5.0),
+              margin: EdgeInsets.all(25.0),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(50.0))),
+              // child: TextFormField(
+              //   onTap: () {
+              //     showSearch(context: context, delegate: DataSearch());
+              //   },
+              //   readOnly: true,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Search Anything...',
+              //     border: OutlineInputBorder(),
+              //     suffixIcon: Icon(Icons.search),
+              //   ),
+              // ),
+              child: Icon(
+                Icons.search,
+                size: 40.0,
               ),
             ),
           ),
@@ -292,8 +307,24 @@ class _HomePageState extends State<HomePage> {
 }
 
 class DataSearch extends SearchDelegate<String> {
-  List<String> wlist = ["Hello", "World", "Hpw are you?"];
-  List<String> recents = ["Hola", "MF"];
+  List<String> wlist = [
+    'Certificates',
+    'Magisterial',
+    'Miscellaneous',
+    'Revenue',
+    'RTI',
+    'Social Security',
+    'Supply'
+  ];
+  List<String> recents = [
+    'Certificates',
+    'Magisterial',
+    'Miscellaneous',
+    'Revenue',
+    'RTI',
+    'Social Security',
+    'Supply'
+  ];
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -343,6 +374,12 @@ class DataSearch extends SearchDelegate<String> {
       itemBuilder: (context, index) => ListTile(
           onTap: () {
             query = list[index];
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Info(),
+                  settings: RouteSettings(arguments: query),
+                ));
           },
           leading: Icon(Icons.pages),
           title: RichText(
