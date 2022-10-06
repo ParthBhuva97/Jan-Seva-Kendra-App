@@ -1,8 +1,11 @@
+import 'package:circle_bottom_navigation_bar/widgets/tab_data.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:circle_bottom_navigation_bar/circle_bottom_navigation_bar.dart';
 // ignore_for_file: prefer_const_constructors
 
 const List<String> list = <String>[
+  "Select Service",
   'Certificates',
   'Magisterial',
   'Miscellaneous',
@@ -12,7 +15,9 @@ const List<String> list = <String>[
   'Supply'
 ];
 
-late List<String> subServices = ["Select Sub-Service"];
+List<String> documentsList = [];
+
+List<String> subServices = ["Select Sub-Service"];
 
 class AdminPanel extends StatefulWidget {
   const AdminPanel({super.key});
@@ -33,10 +38,12 @@ class _AdminPanelState extends State<AdminPanel> {
   // ];
   // String? selectedItem = 'પ્રમાણપત્ર';
 
+  final documentController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    getData("Certificates");
+    getListitems("Select Service");
   }
 
   @override
@@ -139,8 +146,7 @@ class _AdminPanelState extends State<AdminPanel> {
                 ],
               ),
             )
-          : SizedBox(
-              width: double.infinity,
+          : SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
@@ -179,7 +185,7 @@ class _AdminPanelState extends State<AdminPanel> {
                           onChanged: (value) {
                             setState(() {
                               dropdownValue = value;
-                              getData(value!);
+                              getListitems(value!);
                             });
                           },
                           isExpanded:
@@ -233,6 +239,11 @@ class _AdminPanelState extends State<AdminPanel> {
                           onChanged: (value) {
                             setState(() {
                               subServicesValue = value;
+                              getDocuments(dropdownValue!, value!);
+                              documentController.text = "";
+                              for (int i = 0; i < documentsList.length; i++) {
+                                documentController.text += documentsList[i];
+                              }
                             });
                           },
                           isExpanded:
@@ -273,7 +284,8 @@ class _AdminPanelState extends State<AdminPanel> {
                     margin: EdgeInsets.all(20.0),
                     child: TextFormField(
                       minLines: 3,
-                      maxLines: 15,
+                      maxLines: 12,
+                      controller: documentController,
                       decoration: const InputDecoration(
                         labelText: 'List of Documents..',
                         border: OutlineInputBorder(),
@@ -290,33 +302,58 @@ class _AdminPanelState extends State<AdminPanel> {
                 ],
               ),
             ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: "Add Item",
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.add),
+      //       label: "Add Item",
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.update),
+      //       label: "Update Item",
+      //     ),
+      //   ],
+      //   currentIndex: currentIndex,
+      //   onTap: (int index) {
+      //     setState(() {
+      //       currentIndex = index;
+      //     });
+      //   },
+      // ),
+      bottomNavigationBar: CircleBottomNavigationBar(
+        initialSelection: currentIndex,
+        circleSize: 50,
+        circleColor: Colors.black,
+        activeIconColor: Colors.white,
+        inactiveIconColor: Colors.grey,
+        tabs: [
+          TabData(
+            icon: Icons.add,
+            iconSize: 25, // Optional // Optional
+            fontSize: 12, // Optional
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.update),
-            label: "Update Item",
-          ),
+          TabData(icon: Icons.update),
         ],
-        currentIndex: currentIndex,
-        onTap: (int index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
+        onTabChangedListener: (index) => setState(() => currentIndex = index),
       ),
     );
   }
 }
 
-Future<void> getData(String value) async {
+Future<void> getListitems(String value) async {
   // Get docs from collection reference
   QuerySnapshot querySnapshot =
       await FirebaseFirestore.instance.collection(value).get();
   subServices.clear();
   subServices.add("Select Sub-Service");
   querySnapshot.docs.map((doc) => subServices.add(doc.id.toString())).toList();
+}
+
+Future<void> getDocuments(String cName, String docData) async {
+  DocumentSnapshot snapshot =
+      await FirebaseFirestore.instance.collection(cName).doc(docData).get();
+  var snapData = snapshot.data().toString();
+
+  final data = snapData.substring(12, snapData.length - 1);
+  documentsList = data.split(";");
 }
