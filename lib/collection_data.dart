@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jsk_app/main.dart';
 
 import 'info_menu.dart';
 
 class collectionData extends StatefulWidget {
-  const collectionData({super.key});
+  String cName;
+  collectionData({super.key, required this.cName});
 
   @override
   State<collectionData> createState() => _collectionDataState();
@@ -15,9 +15,13 @@ List<String> subServices = [];
 
 class _collectionDataState extends State<collectionData> {
   @override
+  void initState() {
+    super.initState();
+    getListitems(widget.cName);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final msg = ModalRoute.of(context)!.settings.arguments as String;
-    getListitems(msg);
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -54,9 +58,9 @@ class _collectionDataState extends State<collectionData> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Info(),
-                        settings:
-                            RouteSettings(arguments: subServices[position])));
+                      builder: (BuildContext context) => Info(
+                          cName: widget.cName, docName: subServices[position]),
+                    ));
               },
               child: Card(
                 child: Padding(
@@ -81,4 +85,5 @@ Future<void> getListitems(String value) async {
       await FirebaseFirestore.instance.collection(value).get();
   subServices.clear();
   querySnapshot.docs.map((doc) => subServices.add(doc.id.toString())).toList();
+  print("Get List Items Called.");
 }

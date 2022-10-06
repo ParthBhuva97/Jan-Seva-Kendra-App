@@ -211,11 +211,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => Info(),
-                                  settings: RouteSettings(arguments: 'data')));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (BuildContext context) => Info(),
+                          //     ));
                         },
                         icon: Icon(Icons.card_giftcard),
                       ),
@@ -362,8 +362,9 @@ class DataSearch extends SearchDelegate<String> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => collectionData(),
-            settings: RouteSettings(arguments: query),
+            builder: (BuildContext context) => collectionData(
+              cName: query,
+            ),
           ));
     }
   }
@@ -380,8 +381,9 @@ class DataSearch extends SearchDelegate<String> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => collectionData(),
-                  settings: RouteSettings(arguments: query),
+                  builder: (BuildContext context) => collectionData(
+                    cName: query,
+                  ),
                 ));
           },
           leading: Icon(Icons.pages),

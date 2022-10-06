@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // ignore_for_file: prefer_const_constructors
 
+List<String> documentsList = [];
+
 class Documents extends StatefulWidget {
-  const Documents({super.key});
+  String cName;
+  String docName;
+  Documents({super.key, required this.cName, required this.docName});
 
   @override
   State<Documents> createState() => _DocumentsState();
@@ -11,7 +16,7 @@ class Documents extends StatefulWidget {
 class _DocumentsState extends State<Documents> {
   @override
   Widget build(BuildContext context) {
-    final msg = ModalRoute.of(context)!.settings.arguments as String;
+    final cName = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -39,21 +44,31 @@ class _DocumentsState extends State<Documents> {
       ),
       body: Container(
         margin: EdgeInsets.all(20.0),
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context, position) {
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  position.toString(),
-                  style: TextStyle(fontSize: 22.0),
-                ),
-              ),
-            );
-          },
-        ),
+        // child: ListView.builder(
+        //   itemCount: documentsList.length,
+        //   itemBuilder: (context, position) {
+        //     return Card(
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(20.0),
+        //         child: Text(
+        //           documentsList[position],
+        //           style: TextStyle(fontSize: 22.0),
+        //         ),
+        //       ),
+        //     );
+        //   },
+        // ),
+        child: Text(cName.toString()),
       ),
     );
   }
+}
+
+Future<void> getDocuments(String cName, String docData) async {
+  DocumentSnapshot snapshot =
+      await FirebaseFirestore.instance.collection(cName).doc(docData).get();
+  var snapData = snapshot.data().toString();
+
+  final data = snapData.substring(12, snapData.length - 1);
+  documentsList = data.split(";");
 }

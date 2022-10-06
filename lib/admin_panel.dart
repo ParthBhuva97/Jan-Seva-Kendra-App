@@ -19,7 +19,11 @@ List<String> documentsList = [];
 
 final documentController = TextEditingController();
 
+final subServiceController = TextEditingController();
+
 List<String> subServices = ["Select Sub-Service"];
+
+String? cName;
 
 class AdminPanel extends StatefulWidget {
   const AdminPanel({super.key});
@@ -59,12 +63,79 @@ class _AdminPanelState extends State<AdminPanel> {
         automaticallyImplyLeading: false,
       ),
       body: currentIndex == 0
-          ? SizedBox(
-              width: double.infinity,
+          ? SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.all(20.0),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color.fromRGBO(255, 153, 51, 1),
+                            Colors.white,
+                            Color.fromRGBO(19, 136, 8, 1)
+                            //add more colors
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const <BoxShadow>[
+                          BoxShadow(
+                              color: Color.fromRGBO(
+                                  0, 0, 0, 0.57), //shadow for button
+                              blurRadius: 5) //blur radius of shadow
+                        ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
+                        child: DropdownButton(
+                          value: dropdownValue,
+                          items: list.map<DropdownMenuItem<String>>(
+                            (String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            },
+                          ).toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              dropdownValue = value;
+                              cName = dropdownValue;
+                              getListitems(value!);
+                            });
+                          },
+                          isExpanded:
+                              true, //make true to take width of parent widget
+                          underline: Container(), //empty line
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromRGBO(0, 0, 128, 1),
+                          ),
+                          dropdownColor: Colors.white,
+                          iconEnabledColor:
+                              Color.fromRGBO(0, 0, 128, 1), //Icon color
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.all(20.0),
+                    child: TextFormField(
+                      controller: subServiceController,
+                      decoration: const InputDecoration(
+                        labelText: 'Sub-Service Name',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(
+                          Icons.room_service,
+                        ),
+                      ),
+                    ),
+                  ),
                   // Container(
                   //   width: double.infinity,
                   //   margin: EdgeInsets.all(20.0),
@@ -85,64 +156,74 @@ class _AdminPanelState extends State<AdminPanel> {
                   //     }),
                   //   ),
                   // ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.all(20.0),
+                  // Container(
+                  // width: double.infinity,
+                  // margin: EdgeInsets.all(20.0),
 
-                    // child: StreamBuilder<QuerySnapshot>(
-                    //   stream: FirebaseFirestore.instance
-                    //       .collection("Certificates")
-                    //       .snapshots(),
-                    //   builder: (context, snapshot) {
-                    //     if (!snapshot.hasData) {
-                    //       Text("Loading");
-                    //       return Scaffold();
-                    //     } else {
-                    //       List<DropdownMenuItem> subNode = [];
-                    //       for (int i = 0;
-                    //           i < (snapshot.data!.docs.length);
-                    //           i++) {
-                    //         DocumentSnapshot snap = snapshot.data!.docs[i];
-                    //         subNode.add(
-                    //           DropdownMenuItem(
-                    //             value: "${snap.id}",
-                    //             child: Text(
-                    //               snap.id,
-                    //               style: TextStyle(color: Color(0xff11b719)),
-                    //             ),
-                    //           ),
-                    //         );
-                    //       }
-                    //       return DropdownButton(
-                    //         items: subNode,
-                    //         onChanged: (value) {
-                    //           setState(() {
-                    //             selectedItem = value;
-                    //           });
-                    //         },
-                    //         value: selectedItem,
-                    //         isExpanded: false,
-                    //       );
-                    //     }
-                    //   },
-                    // ),
-                  ),
+                  // child: StreamBuilder<QuerySnapshot>(
+                  //   stream: FirebaseFirestore.instance
+                  //       .collection("Certificates")
+                  //       .snapshots(),
+                  //   builder: (context, snapshot) {
+                  //     if (!snapshot.hasData) {
+                  //       Text("Loading");
+                  //       return Scaffold();
+                  //     } else {
+                  //       List<DropdownMenuItem> subNode = [];
+                  //       for (int i = 0;
+                  //           i < (snapshot.data!.docs.length);
+                  //           i++) {
+                  //         DocumentSnapshot snap = snapshot.data!.docs[i];
+                  //         subNode.add(
+                  //           DropdownMenuItem(
+                  //             value: "${snap.id}",
+                  //             child: Text(
+                  //               snap.id,
+                  //               style: TextStyle(color: Color(0xff11b719)),
+                  //             ),
+                  //           ),
+                  //         );
+                  //       }
+                  //       return DropdownButton(
+                  //         items: subNode,
+                  //         onChanged: (value) {
+                  //           setState(() {
+                  //             selectedItem = value;
+                  //           });
+                  //         },
+                  //         value: selectedItem,
+                  //         isExpanded: false,
+                  //       );
+                  //     }
+                  //   },
+                  // ),
+                  // ),
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.all(20.0),
                     child: TextFormField(
                       minLines: 3,
                       maxLines: 15,
+                      controller: documentController,
                       decoration: const InputDecoration(
-                        labelText: 'List of Documents..',
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(
-                          Icons.person,
-                        ),
-                      ),
+                          labelText: 'List of Documents..',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            Icons.file_copy,
+                          )),
                     ),
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text("Add Document"))
+                  ElevatedButton(
+                      onPressed: () {
+                        FirebaseFirestore.instance
+                            .collection(cName!)
+                            .doc(subServiceController.text)
+                            .set({"documents": documentController.text});
+
+                        subServiceController.text = "";
+                        documentController.text = "";
+                      },
+                      child: Text("Add Document"))
                 ],
               ),
             )
