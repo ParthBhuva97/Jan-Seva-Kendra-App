@@ -200,7 +200,9 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: FaIcon(FontAwesomeIcons.idCardClip),
+                        icon: new Tab(
+                          icon: new Image.asset("assets/images/AadharCard.png"),
+                        ),
                       ),
                       Text('Aadhar Card'),
                     ],
