@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/documents_list.dart';
 import 'package:jsk_app/flow_diagram.dart';
-import 'package:jsk_app/main.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // ignore_for_file: prefer_const_constructors
 
@@ -111,7 +110,8 @@ class _InfoState extends State<Info> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Documents()));
+                        builder: (BuildContext context) => Documents(),
+                        settings: RouteSettings(arguments: msg)));
               },
               style: NeumorphicStyle(
                 lightSource: LightSource.bottom,

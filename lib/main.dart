@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:jsk_app/info_menu.dart';
+import 'package:jsk_app/collection_data.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:jsk_app/info_menu.dart';
 import 'package:jsk_app/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 // ignore_for_file: prefer_const_constructors
@@ -359,7 +360,7 @@ class DataSearch extends SearchDelegate<String> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => Info(),
+            builder: (BuildContext context) => collectionData(),
             settings: RouteSettings(arguments: query),
           ));
     }
@@ -377,7 +378,7 @@ class DataSearch extends SearchDelegate<String> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => Info(),
+                  builder: (BuildContext context) => collectionData(),
                   settings: RouteSettings(arguments: query),
                 ));
           },

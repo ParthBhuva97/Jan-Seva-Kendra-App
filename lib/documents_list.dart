@@ -11,6 +11,7 @@ class Documents extends StatefulWidget {
 class _DocumentsState extends State<Documents> {
   @override
   Widget build(BuildContext context) {
+    final msg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         leading: Builder(

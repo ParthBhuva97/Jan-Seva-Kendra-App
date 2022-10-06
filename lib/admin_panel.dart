@@ -17,6 +17,8 @@ const List<String> list = <String>[
 
 List<String> documentsList = [];
 
+final documentController = TextEditingController();
+
 List<String> subServices = ["Select Sub-Service"];
 
 class AdminPanel extends StatefulWidget {
@@ -37,8 +39,6 @@ class _AdminPanelState extends State<AdminPanel> {
   //   'કાર્ડ',
   // ];
   // String? selectedItem = 'પ્રમાણપત્ર';
-
-  final documentController = TextEditingController();
 
   @override
   void initState() {
@@ -239,7 +239,7 @@ class _AdminPanelState extends State<AdminPanel> {
                           onChanged: (value) {
                             setState(() {
                               subServicesValue = value;
-                              getDocuments(dropdownValue!, value!);
+                              getDocuments(dropdownValue!, subServicesValue!);
                               documentController.text = "";
                               for (int i = 0; i < documentsList.length; i++) {
                                 documentController.text += documentsList[i];
@@ -296,7 +296,9 @@ class _AdminPanelState extends State<AdminPanel> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      updateDocument(dropdownValue!, subServicesValue!);
+                    },
                     child: Text("Update Document"),
                   )
                 ],
@@ -356,4 +358,13 @@ Future<void> getDocuments(String cName, String docData) async {
 
   final data = snapData.substring(12, snapData.length - 1);
   documentsList = data.split(";");
+}
+
+Future<void> updateDocument(String cName, String docName) async {
+  var documents = {'documents': documentController.text};
+
+  await FirebaseFirestore.instance
+      .collection(cName)
+      .doc(docName)
+      .update(documents);
 }
