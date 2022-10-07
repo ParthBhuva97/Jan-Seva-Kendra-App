@@ -6,7 +6,10 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Info extends StatefulWidget {
-  const Info({super.key});
+  String cName;
+  String docName;
+
+  Info({super.key, required this.cName, required this.docName});
 
   @override
   State<Info> createState() => _InfoState();
@@ -15,7 +18,6 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
-    final msg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -72,7 +74,7 @@ class _InfoState extends State<Info> {
                   color: Colors.white,
                 ),
                 child: NeumorphicText(
-                  "Available Information" + msg,
+                  "Available Information${widget.docName}",
                   style: NeumorphicStyle(
                     depth: 20, //customize depth here
                     color: Colors.blueAccent, //customize color here
@@ -110,8 +112,11 @@ class _InfoState extends State<Info> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => Documents(),
-                        settings: RouteSettings(arguments: msg)));
+                      builder: (BuildContext context) => Documents(
+                        cName: widget.cName,
+                        docName: widget.docName,
+                      ),
+                    ));
               },
               style: NeumorphicStyle(
                 lightSource: LightSource.bottom,
