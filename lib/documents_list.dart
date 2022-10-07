@@ -15,8 +15,13 @@ class Documents extends StatefulWidget {
 
 class _DocumentsState extends State<Documents> {
   @override
+  void initState() {
+    super.initState();
+    getDocuments(widget.cName, widget.docName);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final cName = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -44,21 +49,20 @@ class _DocumentsState extends State<Documents> {
       ),
       body: Container(
         margin: EdgeInsets.all(20.0),
-        // child: ListView.builder(
-        //   itemCount: documentsList.length,
-        //   itemBuilder: (context, position) {
-        //     return Card(
-        //       child: Padding(
-        //         padding: const EdgeInsets.all(20.0),
-        //         child: Text(
-        //           documentsList[position],
-        //           style: TextStyle(fontSize: 22.0),
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // ),
-        child: Text(cName.toString()),
+        child: ListView.builder(
+          itemCount: documentsList.length,
+          itemBuilder: (context, position) {
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  documentsList[position],
+                  style: TextStyle(fontSize: 22.0),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

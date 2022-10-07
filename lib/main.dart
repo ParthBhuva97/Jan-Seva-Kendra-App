@@ -5,7 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jsk_app/info_menu.dart';
 import 'package:jsk_app/login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:url_launcher/url_launcher.dart';
 // ignore_for_file: prefer_const_constructors
+
+final Uri _url = Uri.parse('https://ahmedabad.gujarat.gov.in/jan-seva-kendra');
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,16 +68,24 @@ class _HomePageState extends State<HomePage> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: Colors.blue,
               ),
               child: Center(
-                child: Text(
-                  'Hello User',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
+                  child: Column(
+                children: [
+                  Icon(
+                    Icons.person,
+                    size: 75.0,
+                    color: Color.fromARGB(255, 223, 221, 221),
+                  ),
+                  Text(
+                    'Welcome, User',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              )),
             ),
             ListTile(
               leading: const Icon(
@@ -152,6 +163,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsets.only(top: 10.0, left: 20.0),
+            child: Text(
+              "Search for Services :",
+              style: TextStyle(color: Colors.blue, fontSize: 20.0),
+            ),
+          ),
           GestureDetector(
             onTap: () {
               showSearch(context: context, delegate: DataSearch());
@@ -182,126 +201,183 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            alignment: FractionalOffset.centerLeft,
-            margin: const EdgeInsets.all(12.0),
-            child: const Text(
-              'Most Frequently Searched : ',
-              style: TextStyle(
-                  color: Colors.blueAccent, fontWeight: FontWeight.bold),
+            width: double.infinity,
+            height: 120.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.document_scanner),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Certificates"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.person),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Magestrial"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.folder),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Miscellaneous"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.monetization_on_sharp),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Revenue"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.person_pin),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5), child: Text("RTI"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.security),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Social Security"))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(Icons.support_outlined),
+                        style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(15),
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(top: 5),
+                          child: Text("Supply"))
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
-            margin: EdgeInsets.all(6.0),
-            alignment: FractionalOffset.center,
+            margin: EdgeInsets.all(20.0),
+            width: double.infinity,
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: new Tab(
-                          icon: new Image.asset("assets/images/AadharCard.png"),
-                        ),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Use Our Web App From Here : ",
+                        style: TextStyle(fontSize: 10.0),
                       ),
-                      Text('Aadhar Card'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _launchUrl();
+                      },
+                      child: Text("Jan Seva Kendra",
+                          style: TextStyle(fontSize: 20.0, color: Colors.blue)),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {}, child: Text("Contact Us")),
                     ],
                   ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (BuildContext context) => Info(),
-                          //     ));
-                        },
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                ]),
-          ),
-          Container(
-            margin: EdgeInsets.all(6.0),
-            alignment: FractionalOffset.center,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data'),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                ]),
-          ),
-          Container(
-            margin: EdgeInsets.all(6.0),
-            alignment: FractionalOffset.center,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data'),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.card_giftcard),
-                      ),
-                      Text('data')
-                    ],
-                  ),
-                ]),
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -404,5 +480,11 @@ class DataSearch extends SearchDelegate<String> {
           )),
       itemCount: list.length,
     );
+  }
+}
+
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
   }
 }

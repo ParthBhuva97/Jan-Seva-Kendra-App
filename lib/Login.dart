@@ -37,16 +37,24 @@ class _LoginState extends State<Login> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.green,
               ),
               child: Center(
-                child: Text(
-                  'Hello Admin',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
+                  child: Column(
+                children: [
+                  Icon(
+                    Icons.person,
+                    size: 75.0,
+                    color: Color.fromARGB(255, 223, 221, 221),
+                  ),
+                  Text(
+                    'Welcome, Admin',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              )),
             ),
             ListTile(
               leading: const Icon(
