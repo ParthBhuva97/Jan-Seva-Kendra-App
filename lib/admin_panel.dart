@@ -379,6 +379,7 @@ class _AdminPanelState extends State<AdminPanel> {
                   ElevatedButton(
                     onPressed: () {
                       updateDocument(dropdownValue!, subServicesValue!);
+                      documentController.text = "";
                     },
                     child: Text("Update Document"),
                   )

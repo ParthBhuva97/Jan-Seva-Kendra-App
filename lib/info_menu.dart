@@ -45,14 +45,14 @@ class _InfoState extends State<Info> {
         //leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFF46B39), Colors.white, Color(0xFF3AB757)],
-            stops: [0, 0.5, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     colors: [Color(0xFFF46B39), Colors.white, Color(0xFF3AB757)],
+        //     stops: [0, 0.5, 1],
+        //     begin: AlignmentDirectional(0, -1),
+        //     end: AlignmentDirectional(0, 1),
+        //   ),
+        // ),
         height: double.infinity,
         width: double.infinity,
         child: Column(
@@ -74,7 +74,7 @@ class _InfoState extends State<Info> {
                   color: Colors.white,
                 ),
                 child: NeumorphicText(
-                  "Available Information${widget.docName}",
+                  "${widget.docName}",
                   style: NeumorphicStyle(
                     depth: 20, //customize depth here
                     color: Colors.blueAccent, //customize color here
@@ -82,7 +82,7 @@ class _InfoState extends State<Info> {
                     shape: NeumorphicShape.convex,
                   ),
                   textStyle: NeumorphicTextStyle(
-                      fontSize: 30,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold //customize size here
                       // AND others usual text style properties (fontFamily, fontWeight, ...)
                       ),

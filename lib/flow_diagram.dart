@@ -39,14 +39,14 @@ class _DiagramState extends State<Diagram> {
         //leading: Image.asset('assets/images/logo.png'),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFF46B39), Colors.white, Color(0xFF3AB757)],
-            stops: [0, 0.5, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
-          ),
-        ),
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     colors: [Color(0xFFF46B39), Colors.white, Color(0xFF3AB757)],
+        //     stops: [0, 0.5, 1],
+        //     begin: AlignmentDirectional(0, -1),
+        //     end: AlignmentDirectional(0, 1),
+        //   ),
+        // ),
         child: ListView(
           children: [
             Container(
@@ -89,8 +89,7 @@ class _DiagramState extends State<Diagram> {
             Container(
               margin: EdgeInsets.all(30.0),
               child: NeumorphicButton(
-                onPressed: () {
-                },
+                onPressed: () {},
                 style: NeumorphicStyle(
                   lightSource: LightSource.bottom,
                   shape: NeumorphicShape.convex,
