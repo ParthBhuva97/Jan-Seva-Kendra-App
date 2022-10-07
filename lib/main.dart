@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Center(
                   child: Column(
-                children: [
+                children: const [
                   Icon(
                     Icons.person,
                     size: 75.0,

@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
               ),
               child: Center(
                   child: Column(
-                children: [
+                children: const [
                   Icon(
                     Icons.person,
                     size: 75.0,
