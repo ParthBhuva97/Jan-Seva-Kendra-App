@@ -142,7 +142,7 @@ class _InfoState extends State<Info> {
                                         height: 20,
                                       ),
                                       Text(
-                                        "Documents",
+                                        "જરૂરી દસ્તાવેજો",
                                         style: TextStyle(fontSize: 20),
                                       )
                                     ]),
@@ -181,7 +181,7 @@ class _InfoState extends State<Info> {
                                         height: 20,
                                       ),
                                       Text(
-                                        "Process",
+                                        "અરજી પ્રક્રિયા",
                                         style: TextStyle(fontSize: 20),
                                       )
                                     ]),
