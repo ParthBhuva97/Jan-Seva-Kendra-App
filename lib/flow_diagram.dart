@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:jsk_app/info_menu.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Diagram extends StatefulWidget {
   const Diagram({super.key});
@@ -95,34 +94,64 @@ class _DiagramState extends State<Diagram> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(30.0),
-                  child: NeumorphicButton(
-                    onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => Info()),
-                      // );
-                      Navigator.pop(context);
-                    },
-                    style: NeumorphicStyle(
-                      lightSource: LightSource.bottom,
-                      shape: NeumorphicShape.convex,
-                      depth: 5,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(20.0)),
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    NeumorphicButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      style: NeumorphicStyle(
+                        lightSource: LightSource.bottom,
+                        shape: NeumorphicShape.convex,
+                        depth: 5,
+                        boxShape: NeumorphicBoxShape.roundRect(
+                            BorderRadius.circular(20.0)),
+                      ),
+                      padding: const EdgeInsets.all(20.0),
+                      child: Center(
+                          child: Text(
+                        "Go Back",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                     ),
-                    padding: const EdgeInsets.all(20.0),
-                    child: Center(
-                        child: Text(
-                      "Go back",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-                  ),
-                ),
+                    NeumorphicButton(
+                        onPressed: () {
+                          var url = Uri.parse(
+                              "https://www.digitalgujarat.gov.in/LoginApp/CitizenLogin.aspx?ServiceID=76&Cul=en-GB");
+                          _launchUrl(url);
+                        },
+                        style: NeumorphicStyle(
+                          lightSource: LightSource.bottom,
+                          shape: NeumorphicShape.convex,
+                          depth: 5,
+                          boxShape: NeumorphicBoxShape.roundRect(
+                              BorderRadius.circular(20.0)),
+                        ),
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Apply Now",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Icon(Icons.arrow_forward)
+                          ],
+                        )),
+                  ],
+                )),
               ],
             ),
           ),
         ));
+  }
+}
+
+Future<void> _launchUrl(_url) async {
+  if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
+    throw 'Could not launch $_url';
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jsk_app/documents_list.dart';
 import 'package:jsk_app/flow_diagram.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:url_launcher/url_launcher.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Info extends StatefulWidget {
@@ -189,6 +190,49 @@ class _InfoState extends State<Info> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                var query = widget.docName
+                                    .toString()
+                                    .replaceAll(" ", "+");
+                                var url = Uri.parse(
+                                    "https://youtube.com/results?search_query=${query}");
+                                _launchUrl(url);
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                padding: EdgeInsets.fromLTRB(5, 0, 5, 15),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue.shade50,
+                                  border: Border.all(
+                                    color: Colors.blue,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Image.asset("assets/images/youtube.jpeg",
+                                          height: 110),
+                                      SizedBox(
+                                        width: 110,
+                                      ),
+                                      Text(
+                                        "Youtube Video",
+                                        style: TextStyle(fontSize: 20),
+                                      )
+                                    ]),
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -200,5 +244,11 @@ class _InfoState extends State<Info> {
         ),
       ),
     );
+  }
+}
+
+Future<void> _launchUrl(_url) async {
+  if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
+    throw 'Could not launch $_url';
   }
 }
