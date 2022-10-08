@@ -112,14 +112,15 @@ class _InfoState extends State<Info> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          Documents(
-                                        cName: widget.cName,
-                                        docName: widget.docName,
-                                      ),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        Documents(
+                                      cName: widget.cName,
+                                      docName: widget.docName,
+                                    ),
+                                  ),
+                                );
                               },
                               child: AnimatedContainer(
                                 duration: Duration(milliseconds: 300),

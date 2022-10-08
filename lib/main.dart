@@ -177,9 +177,18 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(top: 10.0, left: 20.0),
                 child: Text(
                   "Search for Services :",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 198, 230, 255),
-                      fontSize: 20.0),
+                  style: TextStyle(shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(1.5, 1.5),
+                      blurRadius: 2.0,
+                      color: Colors.white.withOpacity(0.3),
+                    ),
+                    // Shadow(
+                    //   offset: Offset(10.0, 10.0),
+                    //   blurRadius: 8.0,
+                    //   color: Color.fromARGB(125, 0, 0, 255),
+                    // ),
+                  ], color: Colors.black.withOpacity(0.7), fontSize: 18.0),
                 ),
               ),
               GestureDetector(
@@ -189,11 +198,22 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(5.0),
-                  margin: EdgeInsets.all(25.0),
+                  margin: EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.all(Radius.circular(50.0))),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(2, 3), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50.0),
+                    ),
+                  ),
+
                   // child: TextFormField(
                   //   onTap: () {
                   //     showSearch(context: context, delegate: DataSearch());
@@ -212,8 +232,33 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
+                margin: EdgeInsets.only(top: 20.0, left: 20.0, bottom: 10.0),
                 width: double.infinity,
-                height: 120.0,
+                child: Text(
+                  "Apply Here : ",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black.withOpacity(0.7),
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(1.5, 1.5),
+                        blurRadius: 2.0,
+                        color: Colors.white.withOpacity(0.3),
+                      ),
+                      // Shadow(
+                      //   offset: Offset(10.0, 10.0),
+                      //   blurRadius: 8.0,
+                      //   color: Color.fromARGB(125, 0, 0, 255),
+                      // ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                // decoration:
+                //     BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+                width: double.infinity,
+                height: 100.0,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -389,33 +434,36 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(20.0),
+                margin: EdgeInsets.only(top: 10.0, left: 20.0, bottom: 5.0),
+                width: double.infinity,
+                child: Text(
+                  "About Us : ",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black.withOpacity(0.7),
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(1.5, 1.5),
+                        blurRadius: 2.0,
+                        color: Colors.white.withOpacity(0.4),
+                      ),
+                      // Shadow(
+                      //   offset: Offset(10.0, 10.0),
+                      //   blurRadius: 8.0,
+                      //   color: Color.fromARGB(125, 0, 0, 255),
+                      // ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                // decoration:
+                //     BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+                margin: EdgeInsets.all(15.0),
                 width: double.infinity,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Use Our Web App From Here : ",
-                            style: TextStyle(fontSize: 10.0),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            var _url =
-                                Uri.parse('https://ssip-359.web.app/#!/');
-                            _launchUrl(_url);
-                          },
-                          child: Text("Jan Seva Kendra",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Color.fromARGB(255, 206, 234, 255))),
-                        ),
-                      ],
-                    ),
                     Container(
                       margin: EdgeInsets.only(right: 25.0),
                       child: Column(
@@ -423,15 +471,64 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                              ),
-                              onPressed: () {},
-                              child: Text("Contact Us")),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                            ),
+                            onPressed: () {
+                              var _url =
+                                  Uri.parse('https://ssip-359.web.app/#!/');
+                              _launchUrl(_url);
+                            },
+                            child: Text("Web App"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text("Or"),
+                    Container(
+                      margin: EdgeInsets.only(left: 25.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                            ),
+                            onPressed: () {
+                              var _url = Uri.parse(
+                                  'https://ssip-359.web.app/#!/contact');
+                              _launchUrl(_url);
+                            },
+                            child: Text("Contact Us"),
+                          ),
                         ],
                       ),
                     )
                   ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10.0, left: 20.0, bottom: 5.0),
+                width: double.infinity,
+                child: Text(
+                  "Near by Jan Seva Kendra : ",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black.withOpacity(0.7),
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(1.5, 1.5),
+                        blurRadius: 2.0,
+                        color: Colors.white.withOpacity(0.4),
+                      ),
+                      // Shadow(
+                      //   offset: Offset(10.0, 10.0),
+                      //   blurRadius: 8.0,
+                      //   color: Color.fromARGB(125, 0, 0, 255),
+                      // ),
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
@@ -440,8 +537,23 @@ class _HomePageState extends State<HomePage> {
                       'https://www.google.com/maps/search/jan+seva+kendra+near+me/@23.3508568,72.3433841,10.26z');
                   _launchUrl(_url);
                 },
-                child: Container(
-                    child: Image.asset("assets/images/GoogleMaps.jpg")),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 20.0, bottom: 20.0, left: 10.0, right: 10.0),
+                  child: Card(
+                    semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image.asset(
+                      "assets/images/map.png",
+                      fit: BoxFit.fill,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 20,
+                    margin: EdgeInsets.all(10),
+                  ),
+                ),
               ),
             ],
           ),

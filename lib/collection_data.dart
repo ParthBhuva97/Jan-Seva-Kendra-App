@@ -81,6 +81,11 @@ class _collectionDataState extends State<collectionData> {
   }
 }
 
+Timestamp get timeLimit {
+  final limit = DateTime.now().subtract(const Duration(days: 1));
+  return Timestamp.fromDate(limit);
+}
+
 Future<void> getListitems(String value) async {
   // Get docs from collection reference
   QuerySnapshot querySnapshot =
