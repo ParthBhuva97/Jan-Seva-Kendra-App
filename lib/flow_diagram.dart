@@ -109,38 +109,46 @@ class _DiagramState extends State<Diagram> {
                             BorderRadius.circular(20.0)),
                       ),
                       padding: const EdgeInsets.all(20.0),
-                      child: Center(
-                          child: Text(
-                        "Go Back",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )),
+                      child: Row(
+                        children: [
+                          Icon(Icons.arrow_back_ios_new_outlined),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            "પાછા જાવ",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                     NeumorphicButton(
-                        onPressed: () {
-                          var url = Uri.parse(
-                              "https://www.digitalgujarat.gov.in/LoginApp/CitizenLogin.aspx?ServiceID=76&Cul=en-GB");
-                          _launchUrl(url);
-                        },
-                        style: NeumorphicStyle(
-                          lightSource: LightSource.bottom,
-                          shape: NeumorphicShape.convex,
-                          depth: 5,
-                          boxShape: NeumorphicBoxShape.roundRect(
-                              BorderRadius.circular(20.0)),
-                        ),
-                        padding: const EdgeInsets.all(20.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Apply Now",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Icon(Icons.arrow_forward)
-                          ],
-                        )),
+                      onPressed: () {
+                        var url = Uri.parse(
+                            "https://www.digitalgujarat.gov.in/LoginApp/CitizenLogin.aspx?ServiceID=76&Cul=en-GB");
+                        _launchUrl(url);
+                      },
+                      style: NeumorphicStyle(
+                        lightSource: LightSource.bottom,
+                        shape: NeumorphicShape.convex,
+                        depth: 5,
+                        boxShape: NeumorphicBoxShape.roundRect(
+                            BorderRadius.circular(20.0)),
+                      ),
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "અરજી કરો",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Icon(Icons.arrow_forward_ios)
+                        ],
+                      ),
+                    ),
                   ],
                 )),
               ],

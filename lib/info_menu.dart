@@ -208,7 +208,7 @@ class _InfoState extends State<Info> {
                               },
                               child: AnimatedContainer(
                                 duration: Duration(milliseconds: 300),
-                                padding: EdgeInsets.fromLTRB(5, 0, 5, 15),
+                                padding: EdgeInsets.fromLTRB(10, 5, 10, 15),
                                 decoration: BoxDecoration(
                                   color: Colors.blue.shade50,
                                   border: Border.all(
@@ -226,7 +226,7 @@ class _InfoState extends State<Info> {
                                         width: 110,
                                       ),
                                       Text(
-                                        "Youtube Video",
+                                        "યુટ્યુબ વિડીયો",
                                         style: TextStyle(fontSize: 20),
                                       )
                                     ]),

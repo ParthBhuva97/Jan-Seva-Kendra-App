@@ -57,9 +57,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Text(
-            "Jan Seva Kendra",
+            "જન સેવા કેન્દ્ર",
             style: TextStyle(
               color: Colors.black,
+              fontWeight: FontWeight.bold,
             ),
           ),
           iconTheme: const IconThemeData(
@@ -176,19 +177,19 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 margin: EdgeInsets.only(top: 10.0, left: 20.0),
                 child: Text(
-                  "Search for Services :",
-                  style: TextStyle(shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(1.5, 1.5),
-                      blurRadius: 2.0,
-                      color: Colors.white.withOpacity(0.3),
-                    ),
-                    // Shadow(
-                    //   offset: Offset(10.0, 10.0),
-                    //   blurRadius: 8.0,
-                    //   color: Color.fromARGB(125, 0, 0, 255),
-                    // ),
-                  ], color: Colors.black.withOpacity(0.7), fontSize: 18.0),
+                  "સેવાઓ શોધો :",
+                  style: TextStyle(
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(1.5, 1.5),
+                        blurRadius: 2.0,
+                        color: Colors.white.withOpacity(0.3),
+                      ),
+                    ],
+                    color: Colors.black.withOpacity(0.7),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               GestureDetector(
@@ -235,9 +236,10 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(top: 20.0, left: 20.0, bottom: 10.0),
                 width: double.infinity,
                 child: Text(
-                  "Apply Here : ",
+                  "અરજી કરો : ",
                   style: TextStyle(
                     fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black.withOpacity(0.7),
                     shadows: <Shadow>[
                       Shadow(
@@ -437,8 +439,9 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(top: 10.0, left: 20.0, bottom: 5.0),
                 width: double.infinity,
                 child: Text(
-                  "About Us : ",
+                  "અમારા વિશે : ",
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 18.0,
                     color: Colors.black.withOpacity(0.7),
                     shadows: <Shadow>[
@@ -512,8 +515,9 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(top: 10.0, left: 20.0, bottom: 5.0),
                 width: double.infinity,
                 child: Text(
-                  "Near by Jan Seva Kendra : ",
+                  "નજીકના જન સેવા કેન્દ્ર : ",
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 18.0,
                     color: Colors.black.withOpacity(0.7),
                     shadows: <Shadow>[
