@@ -479,10 +479,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                             onPressed: () {
                               var _url =
-                                  Uri.parse('https://ssip-359.web.app/#!/');
+                                  Uri.parse('https://ssipuser-b04d9.web.app');
                               _launchUrl(_url);
                             },
-                            child: Text("Web App"),
+                            child: Text("વેબ એપ્લિકેશન"),
                           ),
                         ],
                       ),
@@ -500,10 +500,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                             onPressed: () {
                               var _url = Uri.parse(
-                                  'https://ssip-359.web.app/#!/contact');
+                                  'https://ssipuser-b04d9.web.app/#!/contact');
                               _launchUrl(_url);
                             },
-                            child: Text("Contact Us"),
+                            child: Text("સંપર્ક કરો"),
                           ),
                         ],
                       ),
