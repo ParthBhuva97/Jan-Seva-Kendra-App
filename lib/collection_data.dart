@@ -79,18 +79,26 @@ class _collectionDataState extends State<collectionData> {
       ),
     );
   }
+
+  Future<void> getListitems(String value) async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection(value).get();
+    subServices.clear();
+    querySnapshot.docs
+        .map((doc) => setState(() {
+              subServices.add(doc.id.toString());
+            }))
+        .toList();
+    print("Get List Items Called.");
+  }
 }
 
-Timestamp get timeLimit {
-  final limit = DateTime.now().subtract(const Duration(days: 1));
-  return Timestamp.fromDate(limit);
-}
-
-Future<void> getListitems(String value) async {
-  // Get docs from collection reference
-  QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection(value).get();
-  subServices.clear();
-  querySnapshot.docs.map((doc) => subServices.add(doc.id.toString())).toList();
-  print("Get List Items Called.");
-}
+// Future<void> getListitems(String value) async {
+//   // Get docs from collection reference
+//   QuerySnapshot querySnapshot =
+//       await FirebaseFirestore.instance.collection(value).get();
+//   subServices.clear();
+//   querySnapshot.docs.map((doc) => subServices.add(doc.id.toString())).toList();
+//   print("Get List Items Called.");
+// }

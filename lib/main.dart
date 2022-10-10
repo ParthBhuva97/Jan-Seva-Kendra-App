@@ -669,4 +669,4 @@ Future<void> _launchUrl(_url) async {
   if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
     throw 'Could not launch $_url';
   }
-}
+} 
