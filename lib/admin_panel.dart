@@ -422,24 +422,30 @@ class _AdminPanelState extends State<AdminPanel> {
       ),
     );
   }
-}
 
-Future<void> getListitems(String value) async {
-  // Get docs from collection reference
-  QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection(value).get();
-  subServices.clear();
-  subServices.add("Select Sub-Service");
-  querySnapshot.docs.map((doc) => subServices.add(doc.id.toString())).toList();
-}
+  Future<void> getListitems(String value) async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection(value).get();
+    subServices.clear();
+    subServices.add("Select Sub-Service");
+    querySnapshot.docs
+        .map((doc) => setState(() {
+              subServices.add(doc.id.toString());
+            }))
+        .toList();
+  }
 
-Future<void> getDocuments(String cName, String docData) async {
-  DocumentSnapshot snapshot =
-      await FirebaseFirestore.instance.collection(cName).doc(docData).get();
-  var snapData = snapshot.data().toString();
+  Future<void> getDocuments(String cName, String docData) async {
+    DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection(cName).doc(docData).get();
+    var snapData = snapshot.data().toString();
 
-  final data = snapData.substring(12, snapData.length - 1);
-  documentsList = data.split(";");
+    final data = snapData.substring(12, snapData.length - 1);
+    setState(() {
+      documentsList = data.split(";");
+    });
+  }
 }
 
 Future<void> updateDocument(String cName, String docName) async {
