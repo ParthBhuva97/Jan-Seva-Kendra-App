@@ -66,13 +66,15 @@ class _DocumentsState extends State<Documents> {
       ),
     );
   }
-}
 
-Future<void> getDocuments(String cName, String docData) async {
-  DocumentSnapshot snapshot =
-      await FirebaseFirestore.instance.collection(cName).doc(docData).get();
-  var snapData = snapshot.data().toString();
+  Future<void> getDocuments(String cName, String docData) async {
+    DocumentSnapshot snapshot =
+        await FirebaseFirestore.instance.collection(cName).doc(docData).get();
+    var snapData = snapshot.data().toString();
 
-  final data = snapData.substring(12, snapData.length - 1);
-  documentsList = data.split(";");
+    final data = snapData.substring(12, snapData.length - 1);
+    setState(() {
+      documentsList = data.split(";");
+    });
+  }
 }
