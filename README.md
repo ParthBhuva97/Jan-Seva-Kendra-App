@@ -23,6 +23,7 @@ An Awarness app that can help spread information about different services provid
 - Information can be updated in Real-time.
 - Accessible User Interface
 - Cross platform
+- Provides Nearby Jan Seva Kendra Location
 
 
 ## Used By
