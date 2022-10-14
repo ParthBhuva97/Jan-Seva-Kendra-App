@@ -1,6 +1,7 @@
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:jsk_app/zoomedFlowDiagram.dart';
 
 class Diagram extends StatefulWidget {
   const Diagram({super.key});
@@ -56,39 +57,47 @@ class _DiagramState extends State<Diagram> {
             // ),
             child: ListView(
               children: [
-                Container(
-                  height: 500,
-                  child: GlassmorphicFlexContainer(
-                    borderRadius: 20,
-                    blur: 20,
-                    padding: EdgeInsets.all(40),
-                    alignment: Alignment.bottomCenter,
-                    border: 2,
-                    linearGradient: LinearGradient(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => ZoomedFlow()),
+                    );
+                  },
+                  child: Container(
+                    height: 500,
+                    child: GlassmorphicFlexContainer(
+                      borderRadius: 20,
+                      blur: 20,
+                      padding: EdgeInsets.all(40),
+                      alignment: Alignment.bottomCenter,
+                      border: 2,
+                      linearGradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color(0xff151515).withOpacity(0.2),
+                            Color(0xff151515).withOpacity(0.25),
+                          ],
+                          stops: [
+                            0.1,
+                            1,
+                          ]),
+                      borderGradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Color(0xff151515).withOpacity(0.2),
-                          Color(0xff151515).withOpacity(0.25),
+                          const Color(0xFFffffff).withOpacity(0.5),
+                          Color((0xFFFFFFFF)).withOpacity(0.5),
                         ],
-                        stops: [
-                          0.1,
-                          1,
-                        ]),
-                    borderGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFFffffff).withOpacity(0.5),
-                        Color((0xFFFFFFFF)).withOpacity(0.5),
-                      ],
-                    ),
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: Image.asset(
-                        "assets/images/flow.jpeg",
-                        height: double.infinity,
-                        width: double.infinity,
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(20.0),
+                        child: Image.asset(
+                          "assets/images/flow.jpeg",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

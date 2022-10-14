@@ -34,7 +34,3 @@ This project can be used by :
 - People that can read and understand Gujarati Language.
 
 
-## Feedback
-
-If you have any feedback, please reach out to us at parthbhuva97@gmail.com
-
