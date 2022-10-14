@@ -222,6 +222,19 @@ class _AdminPanelState extends State<AdminPanel> {
 
                         subServiceController.text = "";
                         documentController.text = "";
+                        ScaffoldMessenger.of(context)
+                            .showMaterialBanner(MaterialBanner(
+                          padding: const EdgeInsets.all(20),
+                          content: const Text("Documents Added."),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentMaterialBanner();
+                                },
+                                child: Text("Ok"))
+                          ],
+                        ));
                       },
                       child: Text("Add Document"))
                 ],
@@ -380,6 +393,19 @@ class _AdminPanelState extends State<AdminPanel> {
                     onPressed: () {
                       updateDocument(dropdownValue!, subServicesValue!);
                       documentController.text = "";
+                      ScaffoldMessenger.of(context)
+                          .showMaterialBanner(MaterialBanner(
+                        padding: const EdgeInsets.all(20),
+                        content: const Text("Documents Updated."),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentMaterialBanner();
+                              },
+                              child: Text("Ok"))
+                        ],
+                      ));
                     },
                     child: Text("Update Document"),
                   )
